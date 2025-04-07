@@ -12,7 +12,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(auth -> auth
-            .requestMatchers("/api/health").permitAll()
+            .requestMatchers("/api/health", "/api/auth/register", "/api/auth/login").permitAll()
             .anyRequest().authenticated()           // 🔐 All others protected
             )
             .httpBasic(httpBasic -> httpBasic.disable()) // 🚫 Disable popup auth
